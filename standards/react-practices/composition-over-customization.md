@@ -49,7 +49,7 @@ const SmallTitle = ({ text }) => <Title heading={h3} text={text} />
 
 ## An Example Application
 
-![Fruit App Usage Animation](./Fruit App.gif)
+![Fruit App Usage Animation](./Fruit%20App.gif)
 
 Let's step into an example application to see how this principal can be applied
 in a more complex scenario. In this application, we have a page for each of our
