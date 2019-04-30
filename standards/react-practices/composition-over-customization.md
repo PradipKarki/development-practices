@@ -37,7 +37,7 @@ tests also becomes more challenging.
 
 No, not on its own. It is a simple example to show what customization looks
 like. Even using this simple component multiple times across an application
-could be unwieldy. Consider using composition to make it nicer for common cases:
+could be unwieldy, though. Consider using composition to make it nicer for common cases:
 
 ```javascript
 const ItalicTitle = ({ text }) => <Title type="italic" text={text} />
@@ -158,6 +158,13 @@ silent defaults that won't warn us if we forget to add, for example, the right
 title for our new fruit. Most importantly, why are we touching a `Page`
 component when nothing about the `Page` layout itself is changing?
 
+As the Page gets more complicated, one common approach could be to factor out
+`Title` and `Main` into their own components, each taking a `fruit` prop.
+Adding a new fruit in this case would avoid having to touch `Page` directly,
+but it would now have to update `Title` and `Main`, which are further down the
+React tree. How confident are you _now_ that you will find all of the places
+where an update must be made?
+
 ## Refactoring to use Composition
 
 Similar to our `<Title />` refactor, let's restruture this application to make
@@ -276,4 +283,10 @@ Now, to add our Product Owner's favorite fruit, our path is clear:
 We didn't have to touch Page at all, and we could add in Mangoes without risk of
 interfering with our other fruit pages. All of our Mango related functionality
 was encapsulated into a `MangoesPage` component, which _composed_ with `Page` to
-acheive shared layout functionality. Success!
+acheive shared layout functionality.
+
+Note also that we were able to factor out `Title` into its own component. Rather
+than customize it with `fruit` props, we use it via _composition_. This allows
+us to create small reusable components like `Title` while focusing all `fruit`
+functionality to a localized part of the React tree. No more looking through
+the entire tree to find the places to update. Success!
