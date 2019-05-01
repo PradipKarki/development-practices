@@ -167,7 +167,7 @@ where an update must be made?
 
 ## Refactoring to use Composition
 
-Similar to our `<Title />` refactor, let's restruture this application to make
+Similar to our `<Title />` refactor, let's restructure this application to make
 better use of composition. We will start with a Page that only handles the
 page layout.
 
