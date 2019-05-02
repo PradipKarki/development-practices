@@ -92,9 +92,10 @@ describe('CounterBadge', () => {
   */
   describe('default', () => {
     let wrapper
-    const onIncrement = jest.fn()
+    let onIncrement
 
     beforeEach(() => {
+      onIncrement = jest.fn()
       wrapper = render({ onIncrement })
     })
 
@@ -173,9 +174,10 @@ describe('CounterBadge', () => {
   */
   describe('with a higher count', () => {
     let wrapper
-    const onIncrement = jest.fn()
+    let onIncrement
 
     beforeEach(() => {
+      onIncrement = jest.fn()
       wrapper = render({ onIncrement })
       wrapper.setState({ count: 17 })
     })
