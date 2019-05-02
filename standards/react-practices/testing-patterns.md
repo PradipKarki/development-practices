@@ -239,15 +239,15 @@ describe('CounterBadge', () => {
     let wrapper
 
     beforeEach(() => {
-      wrapper = render({ color: 'primary' })
+      wrapper = render({ color: 'secondary' })
     })
 
-    it('renders a Badge with primary color', () => {
-      expect(wrapper.find(Badge).props().color).toBe('primary')
+    it('renders a Badge with secondary color', () => {
+      expect(wrapper.find(Badge).props().color).toBe('secondary')
     })
 
-    it('renders a Button with primary color', () => {
-      expect(wrapper.find(Button).props().color).toBe('primary')
+    it('renders a Button with secondary color', () => {
+      expect(wrapper.find(Button).props().color).toBe('secondary')
     })
   })
 })
