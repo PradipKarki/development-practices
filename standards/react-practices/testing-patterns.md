@@ -185,10 +185,14 @@ describe('CounterBadge', () => {
     })
 
     /*
-      Again, note here that we are splitting up these increment tests by shared
-      setup (count: 0 vs count: 17), rather than grouping them in a single
-      describe block with all 'increment' tests. This helps keep the code
-      concise as well, since we only set up each different scenario once.
+      Note that in these interaction tests that we are asserting the resulting
+      state of the component. Specifically, we are NOT asserting that it renders
+      the correct props on the next render cycle. Since we check that the state
+      is set directly, and elsewhere we check that given the direct state we
+      render the correct results, we are covering the full cycle. Each unit test
+      can stay small and focused on the piece that counts.
+
+      **Don't mix the two types of tests into one! Keep them simple!**
     */
     it('increments the count by one when the Button is clicked', () => {
       const onClick = wrapper.find(Button).props().onClick
