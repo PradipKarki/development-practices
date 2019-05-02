@@ -147,25 +147,28 @@ describe('CounterBadge', () => {
       **Direct use of `.instance()` should typically be considered a red flag!**
       **
     */
-    it('increments the count by one when the Button is clicked', () => {
-      const onClick = wrapper.find(Button).props().onClick
-      onClick()
-      expect(wrapper.state().count).toBe(1)
-    })
+    describe('when the Button is clicked', () => {
+      beforeEach(() => {
+        const onClick = wrapper.find(Button).props().onClick
+        onClick()
+      })
 
-    /*
-      This is another example of a behavioral/interaction test. In this case,
-      after the action is performed, we assert that a callback prop has been
-      called with the correct arguments. By testing this callback prop here,
-      we do not have to separately assert that the `onClick` method is passed to
-      the Button, or that the Button `typeof onClick` is 'function'... it covers
-      one side of the contract (user interaction) all the way to the other (prop
-      type contract).
-    */
-    it('calls back with the updated count', () => {
-      const onClick = wrapper.find(Button).props().onClick
-      onClick()
-      expect(onIncrement).toHaveBeenCalledWith(1)
+      it('increments the count by one', () => {
+        expect(wrapper.state().count).toBe(1)
+      })
+
+      /*
+        This is another example of a behavioral/interaction test. In this case,
+        after the action is performed, we assert that a callback prop has been
+        called with the correct arguments. By testing this callback prop here,
+        we do not have to separately assert that the `onClick` method is passed to
+        the Button, or that the Button `typeof onClick` is 'function'... it covers
+        one side of the contract (user interaction) all the way to the other (prop
+        type contract).
+      */
+      it('calls back with the updated count', () => {
+        expect(onIncrement).toHaveBeenCalledWith(1)
+      })
     })
   })
 
@@ -196,16 +199,19 @@ describe('CounterBadge', () => {
 
       **Don't mix the two types of tests into one! Keep them simple!**
     */
-    it('increments the count by one when the Button is clicked', () => {
-      const onClick = wrapper.find(Button).props().onClick
-      onClick()
-      expect(wrapper.state().count).toBe(18)
-    })
+    describe('when the Button is clicked', () => {
+      beforeEach(() => {
+        const onClick = wrapper.find(Button).props().onClick
+        onClick()
+      })
 
-    it('calls back with the updated count', () => {
-      const onClick = wrapper.find(Button).props().onClick
-      onClick()
-      expect(onIncrement).toHaveBeenCalledWith(18)
+      it('increments the count by one', () => {
+        expect(wrapper.state().count).toBe(18)
+      })
+
+      it('calls back with the updated count', () => {
+        expect(onIncrement).toHaveBeenCalledWith(18)
+      })
     })
   })
 
